@@ -25,11 +25,14 @@ class Plan(models.Model):
                                                        MaxValueValidator(100)
                                                    ])
 
+    # скидка
+
     def __str__(self):
         return f'Plan: {self.plan_type}'
 
 
 class Subscription(models.Model):
+    'подписка'
     client = models.ForeignKey(Client, related_name='subscriptions', on_delete=models.PROTECT)
     service = models.ForeignKey(Service, related_name='subscriptions', on_delete=models.PROTECT)
     plan = models.ForeignKey(Plan, related_name='subscriptions', on_delete=models.PROTECT)
